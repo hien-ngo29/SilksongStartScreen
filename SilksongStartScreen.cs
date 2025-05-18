@@ -5,7 +5,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UObject = UnityEngine.Object;
-using SFCore;
 using System.IO;
 using System.Reflection;
 using System.Linq;
@@ -18,48 +17,8 @@ namespace SilksongStartScreen
 
         public SilksongStartScreen() : base("Silksong Start Screen")
         {
-            // SFCore.MenuStyleHelper.AddMenuStyleHook += AddMenuStyle;
             On.MenuStyleTitle.SetTitle += FixMenuTitle;
         }
-
-        public override void Initialize()
-        {
-            // var tmpStyle = MenuStyles.Instance.styles.First(x => x.styleObject.name.Contains("Silksong_1"));
-            // MenuStyles.Instance.SetStyle(MenuStyles.Instance.styles.ToList().IndexOf(tmpStyle), false);
-        }
-
-        // private (string languageString, GameObject styleGo, int titleIndex, string unlockKey, string[] achievementKeys,
-        //     MenuStyles.MenuStyle.CameraCurves cameraCurves, AudioMixerSnapshot musicSnapshot) AddMenuStyle(
-        //         MenuStyles self)
-        // {
-        //     GameObject styleGo = new GameObject("Silksong_1");
-        //     styleGo.SetActive(false);
-        //     styleGo.transform.SetParent(self.gameObject.transform);
-        //     styleGo.transform.localPosition = new Vector3(0, 0, 0);
-
-        //     SpriteRenderer renderer = styleGo.AddComponent<SpriteRenderer>();
-        //     renderer.sprite = LoadSpriteFromResources("img1");
-
-        //     var cameraCurves = new MenuStyles.MenuStyle.CameraCurves
-        //     {
-        //         saturation = 1.0f,
-        //         redChannel = new AnimationCurve(),
-        //         greenChannel = new AnimationCurve(),
-        //         blueChannel = new AnimationCurve()
-        //     };
-        //     cameraCurves.redChannel.AddKey(new Keyframe(0f, 0f));
-        //     cameraCurves.redChannel.AddKey(new Keyframe(1f, 1f));
-        //     cameraCurves.greenChannel.AddKey(new Keyframe(0f, 0f));
-        //     cameraCurves.greenChannel.AddKey(new Keyframe(1f, 1f));
-        //     cameraCurves.blueChannel.AddKey(new Keyframe(0f, 0f));
-        //     cameraCurves.blueChannel.AddKey(new Keyframe(1f, 1f));
-
-        //     styleGo.SetActive(true);
-
-        //     AudioMixerSnapshot audioSnapshot = self.styles[1].musicSnapshot.audioMixer.FindSnapshot("Normal");
-
-        //     return ("UI_MENU_STYLE_RADIANT", styleGo, -1, "", null, cameraCurves, audioSnapshot);
-        // }
 
         private void FixMenuTitle(On.MenuStyleTitle.orig_SetTitle orig, MenuStyleTitle self, int index)
         {
